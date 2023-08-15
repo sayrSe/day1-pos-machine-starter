@@ -65,6 +65,11 @@ public class PosMachine {
     }
 
     private String generateReceipt(String itemsReceipt, int totalPrice) {
-        return null;
+        StringBuilder receiptBuilder = new StringBuilder();
+        receiptBuilder.append(itemsReceipt)
+                .append("----------------------\n")
+                .append("Total: ").append(totalPrice).append(" (yuan)\n")
+                .append("**********************");
+        return receiptBuilder.toString();
     }
 }
