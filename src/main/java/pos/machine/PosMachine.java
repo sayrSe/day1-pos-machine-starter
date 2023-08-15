@@ -38,7 +38,9 @@ public class PosMachine {
     }
 
     private List<ReceiptItem> calculateItemsCost(List<ReceiptItem> receiptItems) {
-        return null;
+        return receiptItems.stream()
+                .peek(receiptItem -> receiptItem.setSubTotal(receiptItem.getUnitPrice() * receiptItem.getQuantity()))
+                .collect(Collectors.toList());
     }
 
     private int calculateTotalPrice(List<ReceiptItem> receiptItems) {
