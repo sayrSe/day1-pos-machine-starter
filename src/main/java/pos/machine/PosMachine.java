@@ -11,7 +11,7 @@ public class PosMachine {
         List<ReceiptItem> receiptItems = decodeToItems(barcodes);
         Receipt receipt = calculateCost(receiptItems);
 
-        return null;
+        return renderReceipt(receipt);
     }
 
     private List<ReceiptItem> decodeToItems(List<String> barcodes) {
@@ -45,5 +45,18 @@ public class PosMachine {
 
     private int calculateTotalPrice(List<ReceiptItem> receiptItems) {
         return receiptItems.stream().mapToInt(ReceiptItem::getSubTotal).sum();
+    }
+
+    private String renderReceipt(Receipt receipt) {
+        String itemsReceipt = generateItemsReceipt(receipt);
+        return generateReceipt(itemsReceipt, receipt.getTotalPrice());
+    }
+
+    private String generateItemsReceipt(Receipt receipt) {
+        return null;
+    }
+
+    private String generateReceipt(String itemsReceipt, int totalPrice) {
+        return null;
     }
 }
