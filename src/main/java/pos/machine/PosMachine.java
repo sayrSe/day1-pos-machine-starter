@@ -53,7 +53,15 @@ public class PosMachine {
     }
 
     private String generateItemsReceipt(Receipt receipt) {
-        return null;
+        StringBuilder receiptBuilder = new StringBuilder();
+        receiptBuilder.append("***<store earning no money>Receipt***\n");
+        for (ReceiptItem receiptItem : receipt.getReceiptItems()) {
+            receiptBuilder.append("Name: ").append(receiptItem.getName()).append(", ")
+                    .append("Quantity: ").append(receiptItem.getQuantity()).append(", ")
+                    .append("Unit price: ").append(receiptItem.getUnitPrice()).append(" (yuan), ")
+                    .append("Subtotal: ").append(receiptItem.getSubTotal()).append(" (yuan)\n");
+        }
+        return receiptBuilder.toString();
     }
 
     private String generateReceipt(String itemsReceipt, int totalPrice) {
